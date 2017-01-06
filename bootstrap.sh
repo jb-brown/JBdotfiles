@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 
 
-DIR="$( cd -P "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+dir="$( cd -P "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 echo "Synching dotfiles from ${DIR}"
 
-cd $DIR
+starting_dir=pwd
+cd $dir
 
 #sync dotfiles into home
 rsync --exclude ".git/" \
@@ -12,8 +13,9 @@ rsync --exclude ".git/" \
   --exclude "bootstrap.sh" \
   --exclude "README.md" \
   --exclude "LICENSE-MIT.txt" \
-  -avh --no-perms . ~;
+  -avh --no-perms  $dir ~;
 
+cd $starting_dir
 
 #load .bash_profile into the current terminal session(s)
 #source ~/.bash_profile;
