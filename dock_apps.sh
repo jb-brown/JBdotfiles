@@ -15,9 +15,12 @@ function add_folder_to_dock {
   sleep 1
 }
 
+
 # Wipe all (default) apps and folders from the Dock
 defaults write com.apple.dock persistent-apps -array
 defaults write com.apple.dock persistent-others -array
+killall Dock
+sleep 1
 
 #add persistent apps to the dock
 
