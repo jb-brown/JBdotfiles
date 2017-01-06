@@ -12,7 +12,6 @@ rsync --exclude ".git/" \
   --exclude "bootstrap.sh" \
   --exclude "README.md" \
   --exclude "LICENSE-MIT.txt" \
-  --exclude "dock_apps.sh" \
   -avh --no-perms . ~;
 
 
