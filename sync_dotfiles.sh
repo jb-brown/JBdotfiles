@@ -4,6 +4,8 @@
 DIR="$( cd -P "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 echo "Synching dotfiles from ${DIR}"
 
+cd DIR
+
 #sync dotfiles into home
 rsync --exclude ".git/" \
   --exclude ".DS_Store" \
