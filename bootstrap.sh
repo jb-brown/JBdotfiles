@@ -9,7 +9,7 @@ cd $DIR
 #sync dotfiles into home
 rsync --exclude ".git/" \
   --exclude ".DS_Store" \
-  --exclude "sync_dotfiles.sh" \
+  --exclude "bootstrap.sh" \
   --exclude "README.md" \
   --exclude "LICENSE-MIT.txt" \
   --exclude "dock_apps.sh" \
