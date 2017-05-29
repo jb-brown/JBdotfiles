@@ -1,6 +1,11 @@
 # Add `~/bin` to the `$PATH`
 export PATH="$HOME/bin:$PATH";
 
+export AWS_ACCESS_KEY_ID="AKIAJYZUUPLW2OHAAWZA"
+export AWS_SECRET_ACCESS_KEY="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"
+export AWS_DEFAULT_REGION="us-west-1"
+
+
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
