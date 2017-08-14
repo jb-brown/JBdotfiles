@@ -1,21 +1,20 @@
 #!/usr/bin/env bash
 
-
 dir="$( cd -P "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-echo "Synching dotfiles from ${DIR}"
+echo "Symlinking dotfiles from ${dir}"
 
 startingPWD=$pwd
 cd $dir
 
-#sync dotfiles into home
-rsync --exclude ".git/" \
-  --exclude ".DS_Store" \
-  --exclude "bootstrap.sh" \
-  --exclude "README.md" \
-  --exclude "LICENSE-MIT.txt" \
-  -avh --no-perms . ~;
+for path in "${dir}"/.*; do
 
+	file=$(basename $path)
+	if [ "$file" == ".git" ] || [ "$file" == "." ] || [ "$file" == ".." ]; then
+		continue
+	fi
+	echo "Symlinking ${path} from $HOME/${file}"
+	sudo rm -f "$HOME/${file}"
+	ln -s "${path}" "$HOME/${file}"
+done;
+unset file;
 cd $pwd
-
-#load .bash_profile into the current terminal session(s)
-#source ~/.bash_profile;
