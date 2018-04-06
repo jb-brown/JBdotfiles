@@ -60,8 +60,9 @@ function fs() {
 
 function dockernuke() {
 	docker stop $(docker ps -aq)
-	docker rm $(docker ps -aq)
-	docker rmi $(docker images -q)
+	docker rm $(docker ps -aq) -f
+	docker rmi $(docker images -q) -f
+  docker volume prune -f
 }
 
 # Use Git’s colored diff when available

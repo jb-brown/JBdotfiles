@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+
+# Start an HTTP server from a directory, optionally specifying the port
+function flower() {
+	open "http://flower.shared.tools.clusterone.com"
+}
+
+function drone() {
+	open "http://drone.shared.tools.clusterone.com"
+}
+
+function grafana(){
+	open "http://grafana.shared.tools.clusterone.com"
+}
+
+function monitor(){
+	flower
+	grafana
+	drone
+}
+
+function versions(){
+
+	declare -a versions
+
+	just=$(just --version)
+	docker=$(docker -v)
+	terraform=$(terraform -v)
+	pip=$(pip -V)
+	pip3=$(pip3 -V)
+
+	IFS='/n' read -r -a terraform_array <<< "$terraform"
+	IFS=' ' read -r -a pip_array <<< "$pip"
+	read -r -a pip3_array <<< "$pip3"
+	unset IFS
+
+
+	versions[0]=${docker/Docker version/docker}
+	versions[1]=${just/, version/}
+	versions[2]="pip "${pip_array[1]}
+	versions[3]="pip3 "${pip3_array[1]}
+	versions[4]="python "$(python -c 'import sys; print(".".join(map(str, sys.version_info[:3])))')
+	versions[5]="python3 "$(python3 -c 'import sys; print(".".join(map(str, sys.version_info[:3])))')
+	versions[6]="terraform "${terraform_array[0]/Terraform /}
+
+	for key in ${!versions[@]}
+	do
+    echo ${versions[$key]} | xargs
+	done
+}
