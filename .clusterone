@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-
-# Start an HTTP server from a directory, optionally specifying the port
 function flower() {
 	open $(get_url "flower")
 }
@@ -70,7 +68,5 @@ function urls(){
 }
 
 function get_url(){
-	#echo ${url_array["flower"]}
 	echo ${url_array[$1]}
-
 }
