@@ -1,5 +1,6 @@
 # Add `~/bin` to the `$PATH`
 export PATH="$HOME/go/bin:$HOME/bin:$PATH";
+export PATH=$PATH:~/.android-platform-tools
 export GOPATH="$HOME/go";
 
 # Load the shell dotfiles, and then some:
@@ -50,7 +51,7 @@ complete -W "NSGlobalDomain" defaults;
 complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall;
 
 
-eval $(thefuck --alias)
+eval $(thefuck --alias fix)
 
 source "$HOME/secrets/.bash_profile"
 
